@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Mensagens Escondidas</title>
+  </head>
+  <body>
+    <header></header>
+    <main class="container flex">
+      <div class="formulario">
+        <!-- Introdução para a pessoa escolher qual tipo ela gostaria de criptografar. -->
+        <h1 class="titulo-formulario">Mensagens Escondidas</h1>
+        <p class="introducao">
+          Aqui você poderá criptografar suas mensagens, escolhendo codificar ou
+          decodificar usando os métodos Cifra de César ou Base64.<br />
+          <br />Primeiramente, escolha o tipo de criptografia que gostaria de
+          começar.
+        </p>
+        <select name="opcoes" id="selecao" onchange="codificacao()">
+          <!-- Como vou usar a tag select, uso o "onchange" para alterar a opção que o usuário selecionar -->
+          <option value selected>---</option>
+          <!-- A propriedade "value" retorna o valor da opção. -->
+          <option value="base64">Base 64</option>
+          <option value="caesar">Cifra de Cesar</option>
+        </select>
+        <!-- Tag select para criar opções de seleção. -->
+        <div id="divCesar">
+          <p class="chave">Escolha seu passo:</p>
+          <input type="number" id="chave" value="0" />
+        </div>
+        <div class="inputradios">
+          <!-- HTML do Cifra de Cesar -->
+          <label for="escolhaCesar">Criptografar</label>
+          <!-- Tag label é uma legenda das opções. -->
+          <input
+            type="radio"
+            id="cesarCod"
+            value="cesarCod"
+            name="escolha"
+            checked
+          />
+          <label for="escolhaCesar2">Descriptografar</label>
+          <input
+            type="radio"
+            id="decodCesar"
+            value="decodCesar"
+            name="escolha"
+          />
+        </div>
+        <p class="mensagem">Escreva aqui a sua mensagem:</p>
+        <textarea id="textinput1"></textarea>
+        <p class="resultado">Resultado</p>
+        <textarea id="textoutput" readonly></textarea>
+        <!-- A tag "readonly" serve apenas para leitura. -->
+        <div class="inputradios">
+          <!-- Aqui começa o html do Base64 -->
+          <label for="escolhaBase64">Criptografar</label>
+          <input
+            type="radio"
+            id="b64Cod"
+            value="b64Cod"
+            name="escolhab"
+            checked
+          />
+          <label for="escolhaBase642">Descriptografar</label>
+          <input type="radio" id="b64Decod" value="b64Decod" name="escolhab" />
+        </div>
+        <div id="divB64">
+          <p class="mensagem">Escreva aqui a sua mensagem:</p>
+          <textarea id="textinput2"></textarea>
+          <p>Resultado:</p>
+          <textarea id="textoutput2" readonly></textarea>
+        </div>
+      </div>
+    </main>
+    <script src="./index.js"></script>
+  </body>
+  <footer>
+    <p>Todos os direitos reservados por Karina Cristo.</p>
+  </footer>
+</html>

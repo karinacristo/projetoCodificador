@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
+
+* {
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("./imagens/criptografia.png");
+  background-size: cover;
+  font-size: 15px;
+}
+
+header {
+  margin: 2%;
+}
+
+.formulario {
+  padding: 1%;
+  background: black;
+  width: 600px;
+  color: white;
+  text-align: center;
+}
+
+.introducao,
+#selecao {
+  margin-top: 10%;
+}
+
+textarea {
+  padding: 10px;
+  font-size: 15px;
+  color: black;
+  border-radius: 15px;
+  width: 500px;
+  height: 100px;
+}
+
+footer {
+  margin: 2%;
+  color: white;
+  text-align: center;
+}
