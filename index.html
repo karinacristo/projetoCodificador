@@ -1,84 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Mensagens Escondidas</title>
+    <title>Codificar Mensagens</title>
+    <link href="./style.css" rel="stylesheet" />
+    <script src="./index.js"></script>
+    <script src="./manipulacao.js"></script>
   </head>
   <body>
-    <header></header>
-    <main class="container flex">
+    <header class="cabecalho"></header>
+    <main class="container">
       <div class="formulario">
-        <!-- Introdução para a pessoa escolher qual tipo ela gostaria de criptografar. -->
-        <h1 class="titulo-formulario">Mensagens Escondidas</h1>
-        <p class="introducao">
-          Aqui você poderá criptografar suas mensagens, escolhendo codificar ou
-          decodificar usando os métodos Cifra de César ou Base64.<br />
-          <br />Primeiramente, escolha o tipo de criptografia que gostaria de
-          começar.
-        </p>
-        <select name="opcoes" id="selecao" onchange="codificacao()">
-          <!-- Como vou usar a tag select, uso o "onchange" para alterar a opção que o usuário selecionar -->
-          <option value selected>---</option>
-          <!-- A propriedade "value" retorna o valor da opção. -->
-          <option value="base64">Base 64</option>
-          <option value="caesar">Cifra de Cesar</option>
+        <h1 class="titulo">Mensagens Criptografadas</h1>
+        <select name="" id="selecao" onchange="codificacao()">
+          <option value="" disabled selected>Escolha uma opção</option>
+          <option id="ces" value="cesar">Cifra de Cesar</option>
+          <option id="b64" value="64">Base 64</option>
+          <input type="number" id="incremento" onkeyup="validaIncremento()" />
         </select>
-        <!-- Tag select para criar opções de seleção. -->
-        <div id="divCesar">
-          <p class="chave">Escolha seu passo:</p>
-          <input type="number" id="chave" value="0" />
-        </div>
-        <div class="inputradios">
-          <!-- HTML do Cifra de Cesar -->
-          <label for="escolhaCesar">Criptografar</label>
-          <!-- Tag label é uma legenda das opções. -->
+        <form
+          id="codOrDec"
+          onchange="ajusteEnvio()"
+          onchange="validaIncremento()"
+        >
           <input
             type="radio"
-            id="cesarCod"
-            value="cesarCod"
-            name="escolha"
-            checked
-          />
-          <label for="escolhaCesar2">Descriptografar</label>
+            id="Criptografar"
+            name="CriptoOuDescrip"
+            checked="checked"
+            value="Criptografar"
+          />Criptografar
           <input
             type="radio"
-            id="decodCesar"
-            value="decodCesar"
-            name="escolha"
-          />
-        </div>
-        <p class="mensagem">Escreva aqui a sua mensagem:</p>
-        <textarea id="textinput1"></textarea>
-        <p class="resultado">Resultado</p>
-        <textarea id="textoutput" readonly></textarea>
-        <!-- A tag "readonly" serve apenas para leitura. -->
-        <div class="inputradios">
-          <!-- Aqui começa o html do Base64 -->
-          <label for="escolhaBase64">Criptografar</label>
+            id="Descriptografar"
+            name="CriptoOuDescrip"
+            value="Descriptografar"
+          />Descriptografar
+        </form>
+        <form action="" id="textos">
           <input
-            type="radio"
-            id="b64Cod"
-            value="b64Cod"
-            name="escolhab"
-            checked
+            class="textoEntrada"
+            type="text"
+            placeholder="Digite a sua mensagem"
+            required
+            onkeyup="base64()"
           />
-          <label for="escolhaBase642">Descriptografar</label>
-          <input type="radio" id="b64Decod" value="b64Decod" name="escolhab" />
-        </div>
-        <div id="divB64">
-          <p class="mensagem">Escreva aqui a sua mensagem:</p>
-          <textarea id="textinput2"></textarea>
-          <p>Resultado:</p>
-          <textarea id="textoutput2" readonly></textarea>
-        </div>
+          <input
+            class="textoEntradaC"
+            type="text"
+            placeholder="Digite a sua mensagem"
+            required
+            onkeyup="validaIncremento()"
+          />
+          <textarea
+            name="textoConvertido"
+            id="txtConvertido"
+            placeholder="Resultado"
+          >
+          </textarea>
+          <textarea name="textoConvertido" id="txtConvertidoC"> </textarea>
+        </form>
       </div>
     </main>
-    <script src="./index.js"></script>
+    <footer class="flex">
+      <p class="textorodape">
+        © Todos os direitos reservados por Karina Cristo.
+      </p>
+    </footer>
   </body>
-  <footer>
-    <p>Todos os direitos reservados por Karina Cristo.</p>
-  </footer>
 </html>
