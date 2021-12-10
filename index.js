@@ -1,53 +1,65 @@
-//ajustando o incremento
-function validaIncremento() {
-  var incremento = document.getElementById("incremento").value;
-  incremento = incremento % 26; //recebe o resto da divisão por 26 que sao as letras do alfabeto
-
-  if (document.querySelector("#Descriptografar").checked) {
-    incremento = incremento * -1; //negativo para decrementar
+function validandoPasso() {
+  var passo = document.getElementById("passo").value;
+  passo = passo % 26;
+  if (document.querySelector("#descriptografar").checked) {
+    passo = passo * -1;
   }
-  cesar(incremento); //chama a função cesar que tem o incremento como parametro
+  cesar(passo);
 }
+function cesar(passo) {
+  var entrada = document.querySelector(".mensagemRecebidaCesar").value;
+  var resultado = document.querySelector("#resultadoCesar");
+  var modificacao = "";
+  resultado.innerHTML = "";
 
-//logica cesar
-function cesar(incremento) {
-  var textoDeEntrada = document.querySelector(".textoEntradaC").value;
-  var textoDeSaida = document.querySelector("#txtConvertidoC");
-  var transiçao = ""; //variavel que receberá o valor charcode para ser mudado depois
-  textoDeSaida.innerHTML = ""; //textofinal
-
-  for (var i = 0; i < textoDeEntrada.length; i++) {
-    //for para pegar letra por letra e para incremneta-los
-    transiçao = textoDeEntrada.charCodeAt(i); //numero da letra dentro do for
-
-    if (transiçao >= 65 && transiçao <= 90) {
-      //condiçãopara letras maiusculas
-      transiçao = transiçao + incremento; //soma ao charCode o incremento
-      if (transiçao > 90) {
-        transiçao = transiçao - 26; //Caso o incremento estoure a condição
-      } else if (transiçao < 65) {
-        transiçao = transiçao + 26; //Caso o incremento estoure a condição
+  for (var i = 0; i < entrada.length; i++) {
+    modificacao = entrada.charCodeAt(i);
+    if (modificacao >= 65 && modificacao <= 90) {
+      modificacao = modificacao + passo;
+      if (modificacao > 90) {
+        modificacao = modificacao - 26;
+      } else if (modificacao < 65) {
+        modificacao = modificacao + 26;
       }
     }
-    if (transiçao >= 97 && transiçao <= 122) {
-      //condiçao para letras minusculas
-      transiçao = transiçao + incremento; //soma ao charCode o incremento
-      if (transiçao > 122) {
-        transiçao = transiçao - 26; //Caso o incremento estoure a condição
-      } else if (transiçao < 97) {
-        transiçao = transiçao + 26; //Caso o incremento estoure a condição
+    if (modificacao >= 97 && modificacao <= 122) {
+      modificacao = modificacao + passo;
+      if (modificacao > 122) {
+        modificacao = modificacao - 26;
+      } else if (modificacao < 97) {
+        modificacao = modificacao + 26;
       }
     }
-
-    textoDeSaida.innerHTML += String.fromCharCode(transiçao); //transfromando o charcode em string para exibi-lo
+    resultado.innerHTML += String.fromCharCode(modificacao);
   }
 }
-
-//logica base 64
 function base64() {
-  var textoDeEntrada = document.querySelector(".textoEntrada").value;
-  var textoDeSaida = document.querySelector("#txtConvertido");
-  if (document.querySelector("#Criptografar").checked)
-    textoDeSaida.innerHTML = btoa(textoDeEntrada);
-  else textoDeSaida.innerHTML = atob(textoDeEntrada);
+  var entrada = document.querySelector(".mensagemRecebida64").value;
+  var resultado = document.querySelector("#resultado64");
+  if (document.querySelector("#criptografar").checked)
+    resultado.innerHTML = btoa(entrada);
+  else resultado.innerHTML = atob(entrada);
+}
+var cod = document.querySelector("#criptografar").value;
+var dec = document.querySelector("#descriptografar").value;
+function codificacao() {
+  var escolha = document.querySelector("#selecao");
+  if (document.querySelector("#selecao").value == "cesar") {
+    document.getElementById("passo").style.display = "block";
+    document.querySelector(".mensagemRecebidaCesar").style.display = "block";
+    document.querySelector(".mensagemRecebida64").style.display = "none";
+    document.querySelector("#resultadoCesar").style.display = "block";
+    document.querySelector("#resultado64").style.display = "none";
+  } else if (document.querySelector("#selecao").value == "64") {
+    document.getElementById("passo").style.display = "none";
+    document.querySelector(".mensagemRecebidaCesar").style.display = "none";
+    document.querySelector(".mensagemRecebida64").style.display = "block";
+    document.querySelector("#resultadoCesar").style.display = "none";
+    document.querySelector("#resultado64").style.display = "block";
+  } else {
+    document.querySelector(".mensagemRecebida64").style.display = "block";
+    document.querySelector(".mensagemRecebidaCesar").style.display = "none";
+    document.querySelector("#resultadoCesar").style.display = "none";
+    document.querySelector("#resultado64").style.display = "block";
+  }
 }

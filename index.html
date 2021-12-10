@@ -7,67 +7,68 @@
     <title>Codificar Mensagens</title>
     <link href="./style.css" rel="stylesheet" />
     <script src="./index.js"></script>
-    <script src="./manipulacao.js"></script>
   </head>
   <body>
     <header class="cabecalho"></header>
-    <main class="container">
+    <main class="menu">
       <div class="formulario">
         <h1 class="titulo">Mensagens Criptografadas</h1>
         <select name="" id="selecao" onchange="codificacao()">
           <option value="" disabled selected>Escolha uma opção</option>
-          <option id="ces" value="cesar">Cifra de Cesar</option>
-          <option id="b64" value="64">Base 64</option>
-          <input type="number" id="incremento" onkeyup="validaIncremento()" />
+          <option id="cesar" value="cesar">Cifra de Cesar</option>
+          <option id="base" value="64">Base 64</option>
+          <input
+            type="number"
+            id="passo"
+            onkeyup="validandoPasso()"
+            placeholder="Digite seu passo"
+          />
         </select>
-        <form
-          id="codOrDec"
-          onchange="ajusteEnvio()"
-          onchange="validaIncremento()"
-        >
+        <form>
           <input
             type="radio"
-            id="Criptografar"
-            name="CriptoOuDescrip"
+            id="criptografar"
+            name="escolha"
             checked="checked"
-            value="Criptografar"
+            value="criptografar"
           />Criptografar
           <input
             type="radio"
-            id="Descriptografar"
-            name="CriptoOuDescrip"
-            value="Descriptografar"
+            id="descriptografar"
+            name="escolha"
+            value="descriptografar"
           />Descriptografar
         </form>
-        <form action="" id="textos">
+        <form id="mensagens">
           <input
-            class="textoEntrada"
+            class="mensagemRecebida64"
             type="text"
             placeholder="Digite a sua mensagem"
             required
             onkeyup="base64()"
           />
           <input
-            class="textoEntradaC"
+            class="mensagemRecebidaCesar"
             type="text"
             placeholder="Digite a sua mensagem"
             required
-            onkeyup="validaIncremento()"
+            onkeyup="validandoPasso()"
           />
           <textarea
             name="textoConvertido"
-            id="txtConvertido"
+            id="resultado64"
             placeholder="Resultado"
-          >
-          </textarea>
-          <textarea name="textoConvertido" id="txtConvertidoC"> </textarea>
+          ></textarea>
+          <textarea
+            name="textoConvertido"
+            id="resultadoCesar"
+            placeholder="Resultado"
+          ></textarea>
         </form>
       </div>
     </main>
-    <footer class="flex">
-      <p class="textorodape">
-        © Todos os direitos reservados por Karina Cristo.
-      </p>
+    <footer class="rodape">
+      <p>© Todos os direitos reservados por Karina Cristo.</p>
     </footer>
   </body>
 </html>
